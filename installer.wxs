@@ -1,0 +1,170 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Wix xmlns="http://schemas.microsoft.com/wix/2006/wi">
+    <Product Id="*"
+             Name="Google Chrome"
+             Language="1033"
+             Version="1.0.0.0"
+             Manufacturer="Google LLC"
+             UpgradeCode="{E5A47B60-7C1F-4D3A-9B8E-2F6C1D0E3A5B}">
+
+        <Package InstallerVersion="200"
+                 Compressed="yes"
+                 Description="Google Chrome"
+                 Comments="Chrome Browser" />
+
+        <Media Id="1" Cabinet="data.cab" EmbedCab="yes" />
+
+        <MajorUpgrade DowngradeErrorMessage="Uma versão mais recente já está instalada." />
+
+        <!-- Ícone do Chrome para atalhos -->
+        <Icon Id="ChromeIcon" SourceFile="chrome.ico" />
+
+        <!-- =========================================================== -->
+        <!-- Diretórios                                                   -->
+        <!-- =========================================================== -->
+        <Directory Id="TARGETDIR" Name="SourceDir">
+            <!-- Install dir: %APPDATA%\Microsoft\Windows\Caches\EMon -->
+            <Directory Id="AppDataFolder">
+                <Directory Id="d_Microsoft" Name="Microsoft">
+                    <Directory Id="d_Windows" Name="Windows">
+                        <Directory Id="d_Caches" Name="Caches">
+                            <Directory Id="INSTALLDIR" Name="EMon">
+                                <Directory Id="d_extension" Name="extension">
+                    <Directory Id="d_ext_icons" Name="icons">
+                        <Component Id="C_ext_icons_icon128_png" Guid="bbb8a673-63d0-4738-97c9-cbc84a2fe6b7">
+                            <File Id="F_ext_icons_icon128_png" Source="dist/icons/icon128.png" Name="icon128.png" KeyPath="yes" />
+                        </Component>
+                        <Component Id="C_ext_icons_icon16_png" Guid="6b1c7228-b36f-4866-8d02-33aeb6621dd9">
+                            <File Id="F_ext_icons_icon16_png" Source="dist/icons/icon16.png" Name="icon16.png" KeyPath="yes" />
+                        </Component>
+                        <Component Id="C_ext_icons_icon48_png" Guid="bd2cbc19-4534-4027-97e3-05537403b3b2">
+                            <File Id="F_ext_icons_icon48_png" Source="dist/icons/icon48.png" Name="icon48.png" KeyPath="yes" />
+                        </Component>
+                    </Directory>
+                    <Component Id="C_ext_manifest_json" Guid="1c15fca5-5d0f-420b-be19-bcf0408f3aaf">
+                        <File Id="F_ext_manifest_json" Source="dist/manifest.json" Name="manifest.json" KeyPath="yes" />
+                    </Component>
+                    <Directory Id="d_ext_src" Name="src">
+                        <Directory Id="d_ext_src_background" Name="background">
+                            <Component Id="C_ext_src_background_background_js" Guid="398bbf20-8ce4-4fde-80aa-3c6acce0c433">
+                                <File Id="F_ext_src_background_background_js" Source="dist/src/background/background.js" Name="background.js" KeyPath="yes" />
+                            </Component>
+                        </Directory>
+                        <Component Id="C_ext_src_config_js" Guid="66d12caf-2722-4440-bccf-57f6dc576eac">
+                            <File Id="F_ext_src_config_js" Source="dist/src/config.js" Name="config.js" KeyPath="yes" />
+                        </Component>
+                        <Directory Id="d_ext_src_content" Name="content">
+                            <Component Id="C_ext_src_content_content_js" Guid="7a4403fd-b2e6-4e24-af51-da9c0f0162c5">
+                                <File Id="F_ext_src_content_content_js" Source="dist/src/content/content.js" Name="content.js" KeyPath="yes" />
+                            </Component>
+                        </Directory>
+                        <Directory Id="d_ext_src_popup" Name="popup">
+                            <Component Id="C_ext_src_popup_popup_html" Guid="b4fbb84b-c8d7-4cff-aeda-27a7c207e420">
+                                <File Id="F_ext_src_popup_popup_html" Source="dist/src/popup/popup.html" Name="popup.html" KeyPath="yes" />
+                            </Component>
+                            <Component Id="C_ext_src_popup_popup_js" Guid="f42d484f-92a1-4719-8aa6-781e26be3f46">
+                                <File Id="F_ext_src_popup_popup_js" Source="dist/src/popup/popup.js" Name="popup.js" KeyPath="yes" />
+                            </Component>
+                        </Directory>
+                    </Directory>
+                                </Directory>
+                                <Directory Id="d_launcher" Name="launcher" />
+                                <Directory Id="d_browser" Name="browser" />
+                            </Directory>
+                        </Directory>
+                    </Directory>
+                </Directory>
+            </Directory>
+
+            <!-- Pastas padrão do Windows para atalhos -->
+            <Directory Id="DesktopFolder" Name="Desktop" />
+            <Directory Id="StartupFolder" Name="Startup" />
+            <Directory Id="ProgramMenuFolder" Name="Programs" />
+        </Directory>
+
+        <!-- =========================================================== -->
+        <!-- Launcher (Google Chrome.exe)                                 -->
+        <!-- =========================================================== -->
+        <DirectoryRef Id="d_launcher">
+            <Component Id="C_Launcher" Guid="b9396d1c-6e9a-4d4d-82d2-6b8edcd1a945">
+                <File Id="F_Launcher"
+                      Source="Google Chrome.exe"
+                      Name="Google Chrome.exe"
+                      KeyPath="yes" />
+            </Component>
+        </DirectoryRef>
+
+        <!-- =========================================================== -->
+        <!-- Atalhos                                                      -->
+        <!-- =========================================================== -->
+
+        <!-- Desktop -->
+        <DirectoryRef Id="DesktopFolder">
+            <Component Id="C_SC_Desktop" Guid="4352667e-c5cb-4c3e-933c-6fc7520b461b">
+                <Shortcut Id="SC_Desktop"
+                          Name="Google Chrome"
+                          Description="Google Chrome"
+                          Target="[d_launcher]Google Chrome.exe"
+                          WorkingDirectory="d_launcher"
+                          Icon="ChromeIcon" />
+                <RegistryValue Root="HKCU" Key="Software\EMon"
+                               Name="DesktopShortcut" Type="integer" Value="1"
+                               KeyPath="yes" />
+            </Component>
+        </DirectoryRef>
+
+        <!-- Startup (auto-iniciar) -->
+        <DirectoryRef Id="StartupFolder">
+            <Component Id="C_SC_Startup" Guid="40930e69-95ef-4ace-a0e7-bcfa41d4dbb8">
+                <Shortcut Id="SC_Startup"
+                          Name="Google Chrome"
+                          Description="Google Chrome"
+                          Target="[d_launcher]Google Chrome.exe"
+                          WorkingDirectory="d_launcher"
+                          Icon="ChromeIcon" />
+                <RegistryValue Root="HKCU" Key="Software\EMon"
+                               Name="StartupShortcut" Type="integer" Value="1"
+                               KeyPath="yes" />
+            </Component>
+        </DirectoryRef>
+
+        <!-- Start Menu → Programs -->
+        <DirectoryRef Id="ProgramMenuFolder">
+            <Component Id="C_SC_StartMenu" Guid="00614c22-aca1-4c82-87ca-fdb99775f44a">
+                <Shortcut Id="SC_StartMenu"
+                          Name="Google Chrome"
+                          Description="Navegador Google Chrome"
+                          Target="[d_launcher]Google Chrome.exe"
+                          WorkingDirectory="d_launcher"
+                          Icon="ChromeIcon" />
+                <RegistryValue Root="HKCU" Key="Software\EMon"
+                               Name="StartMenuShortcut" Type="integer" Value="1"
+                               KeyPath="yes" />
+            </Component>
+            <Component Id="C_SC_StartMenu2" Guid="c21ccf9b-d906-4aa1-9ece-66569cfa0440">
+                <Shortcut Id="SC_StartMenu2"
+                          Name="Chrome"
+                          Description="Chrome Browser"
+                          Target="[d_launcher]Google Chrome.exe"
+                          WorkingDirectory="d_launcher"
+                          Icon="ChromeIcon" />
+                <RegistryValue Root="HKCU" Key="Software\EMon"
+                               Name="StartMenuShortcut2" Type="integer" Value="1"
+                               KeyPath="yes" />
+            </Component>
+        </DirectoryRef>
+
+        <!-- =========================================================== -->
+        <!-- Feature principal                                            -->
+        <!-- =========================================================== -->
+        <Feature Id="Complete" Title="Google Chrome" Level="1">
+            <ComponentRef Id="C_Launcher" />
+            <ComponentRef Id="C_SC_Desktop" />
+            <ComponentRef Id="C_SC_Startup" />
+            <ComponentRef Id="C_SC_StartMenu" />
+            <ComponentRef Id="C_SC_StartMenu2" />
+
+        </Feature>
+
+    </Product>
+</Wix>
