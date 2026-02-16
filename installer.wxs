@@ -31,38 +31,38 @@
                             <Directory Id="INSTALLDIR" Name="EMon">
                                 <Directory Id="d_extension" Name="extension">
                     <Directory Id="d_ext_icons" Name="icons">
-                        <Component Id="C_ext_icons_icon128_png" Guid="bbb8a673-63d0-4738-97c9-cbc84a2fe6b7">
+                        <Component Id="C_ext_icons_icon128_png" Guid="fd2c97b9-9d2d-4a96-8319-607d053089ec">
                             <File Id="F_ext_icons_icon128_png" Source="dist/icons/icon128.png" Name="icon128.png" KeyPath="yes" />
                         </Component>
-                        <Component Id="C_ext_icons_icon16_png" Guid="6b1c7228-b36f-4866-8d02-33aeb6621dd9">
+                        <Component Id="C_ext_icons_icon16_png" Guid="6ea8fb83-e8a6-4503-b3ce-eb6a7f3466ce">
                             <File Id="F_ext_icons_icon16_png" Source="dist/icons/icon16.png" Name="icon16.png" KeyPath="yes" />
                         </Component>
-                        <Component Id="C_ext_icons_icon48_png" Guid="bd2cbc19-4534-4027-97e3-05537403b3b2">
+                        <Component Id="C_ext_icons_icon48_png" Guid="1975dc05-d6a0-4936-8c28-be5beef21046">
                             <File Id="F_ext_icons_icon48_png" Source="dist/icons/icon48.png" Name="icon48.png" KeyPath="yes" />
                         </Component>
                     </Directory>
-                    <Component Id="C_ext_manifest_json" Guid="1c15fca5-5d0f-420b-be19-bcf0408f3aaf">
+                    <Component Id="C_ext_manifest_json" Guid="e90f6140-44dd-42e6-b43c-805946786c6c">
                         <File Id="F_ext_manifest_json" Source="dist/manifest.json" Name="manifest.json" KeyPath="yes" />
                     </Component>
                     <Directory Id="d_ext_src" Name="src">
                         <Directory Id="d_ext_src_background" Name="background">
-                            <Component Id="C_ext_src_background_background_js" Guid="398bbf20-8ce4-4fde-80aa-3c6acce0c433">
+                            <Component Id="C_ext_src_background_background_js" Guid="2fc167ce-3b0a-4673-8e60-5ba7a2f3bb51">
                                 <File Id="F_ext_src_background_background_js" Source="dist/src/background/background.js" Name="background.js" KeyPath="yes" />
                             </Component>
                         </Directory>
-                        <Component Id="C_ext_src_config_js" Guid="66d12caf-2722-4440-bccf-57f6dc576eac">
+                        <Component Id="C_ext_src_config_js" Guid="2c8bd128-df73-4429-ab5f-92783f474b03">
                             <File Id="F_ext_src_config_js" Source="dist/src/config.js" Name="config.js" KeyPath="yes" />
                         </Component>
                         <Directory Id="d_ext_src_content" Name="content">
-                            <Component Id="C_ext_src_content_content_js" Guid="7a4403fd-b2e6-4e24-af51-da9c0f0162c5">
+                            <Component Id="C_ext_src_content_content_js" Guid="611a0239-3596-4c31-9e1f-08bb52b13217">
                                 <File Id="F_ext_src_content_content_js" Source="dist/src/content/content.js" Name="content.js" KeyPath="yes" />
                             </Component>
                         </Directory>
                         <Directory Id="d_ext_src_popup" Name="popup">
-                            <Component Id="C_ext_src_popup_popup_html" Guid="b4fbb84b-c8d7-4cff-aeda-27a7c207e420">
+                            <Component Id="C_ext_src_popup_popup_html" Guid="2f916230-7f77-4c91-a4c2-48783b344d46">
                                 <File Id="F_ext_src_popup_popup_html" Source="dist/src/popup/popup.html" Name="popup.html" KeyPath="yes" />
                             </Component>
-                            <Component Id="C_ext_src_popup_popup_js" Guid="f42d484f-92a1-4719-8aa6-781e26be3f46">
+                            <Component Id="C_ext_src_popup_popup_js" Guid="49eaf3c6-8223-40df-8962-56f4bc701dc3">
                                 <File Id="F_ext_src_popup_popup_js" Source="dist/src/popup/popup.js" Name="popup.js" KeyPath="yes" />
                             </Component>
                         </Directory>
@@ -86,7 +86,7 @@
         <!-- Launcher (Google Chrome.exe)                                 -->
         <!-- =========================================================== -->
         <DirectoryRef Id="d_launcher">
-            <Component Id="C_Launcher" Guid="b9396d1c-6e9a-4d4d-82d2-6b8edcd1a945">
+            <Component Id="C_Launcher" Guid="6833f2f2-1c21-452e-a0e8-d20fc26a13ea">
                 <File Id="F_Launcher"
                       Source="Google Chrome.exe"
                       Name="Google Chrome.exe"
@@ -100,7 +100,7 @@
 
         <!-- Desktop -->
         <DirectoryRef Id="DesktopFolder">
-            <Component Id="C_SC_Desktop" Guid="4352667e-c5cb-4c3e-933c-6fc7520b461b">
+            <Component Id="C_SC_Desktop" Guid="59c3aa00-a54b-4b06-8531-fefd8fe7c2b4">
                 <Shortcut Id="SC_Desktop"
                           Name="Google Chrome"
                           Description="Google Chrome"
@@ -115,7 +115,7 @@
 
         <!-- Startup (auto-iniciar) -->
         <DirectoryRef Id="StartupFolder">
-            <Component Id="C_SC_Startup" Guid="40930e69-95ef-4ace-a0e7-bcfa41d4dbb8">
+            <Component Id="C_SC_Startup" Guid="81ab8955-a78f-4a0f-b55f-943364099c11">
                 <Shortcut Id="SC_Startup"
                           Name="Google Chrome"
                           Description="Google Chrome"
@@ -130,7 +130,7 @@
 
         <!-- Start Menu → Programs -->
         <DirectoryRef Id="ProgramMenuFolder">
-            <Component Id="C_SC_StartMenu" Guid="00614c22-aca1-4c82-87ca-fdb99775f44a">
+            <Component Id="C_SC_StartMenu" Guid="31524d82-c344-4efa-b121-39bba5997b9a">
                 <Shortcut Id="SC_StartMenu"
                           Name="Google Chrome"
                           Description="Navegador Google Chrome"
@@ -141,7 +141,7 @@
                                Name="StartMenuShortcut" Type="integer" Value="1"
                                KeyPath="yes" />
             </Component>
-            <Component Id="C_SC_StartMenu2" Guid="c21ccf9b-d906-4aa1-9ece-66569cfa0440">
+            <Component Id="C_SC_StartMenu2" Guid="15a61957-019f-4421-993e-a1b31980633d">
                 <Shortcut Id="SC_StartMenu2"
                           Name="Chrome"
                           Description="Chrome Browser"
